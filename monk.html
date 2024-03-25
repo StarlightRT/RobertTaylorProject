@@ -41,6 +41,42 @@
             <img src="monk.png" alt="Monk" class="class-image">
         </section>
     </main>
-    <script src="DnDJS.js"></script>
+    <button onclick="rollStats()">Roll for Stats</button>
+    <div id="stats"></div>
+    <script> 
+    // Due to the stats being assigned differently, I wrote the script in the file instead of a separate js file.
+        function rollStats() {
+            // Function to roll 3d6
+            function roll3d6() {
+                return Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
+            }
+
+            // Roll 3d6 six times
+            //
+            const rolls = [];
+            for (let i = 0; i < 6; i++) {
+                rolls.push(roll3d6());
+            }
+
+            // Assign the highest rolls to appropriate stats
+            rolls.sort((a, b) => b - a);
+            const stats = {
+                "Strength": rolls[3],
+                "Dexterity": rolls[0],
+                "Constitution": rolls[2],
+                "Intelligence": rolls[5],
+                "Wisdom": rolls[1],
+                "Charisma": rolls[4]
+            };
+
+            // Display the rolled stats
+            document.getElementById("stats").innerHTML = `
+                <h3>Monk Stats</h3>
+                <ul>
+                    ${Object.entries(stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
+                </ul>
+            `;
+        }
+    </script>
 </body>
 </html>

@@ -36,11 +36,48 @@
     </header>
     <main>
         <section id="Ranger" class="class-info">
-            <h2>Barbarian</h2>
+            <h2>Ranger</h2>
             <p>Masters of the wilderness, Rangers are skilled hunters and trackers who roam the untamed wilds in search of their quarry. Whether wielding a bow, a pair of finely crafted knives, or forging a bond with a loyal animal companion, Rangers excel at surviving in the harshest environments and striking swiftly and decisively against their foes. They are the guardians of the natural world, defending it from the encroachment of civilization and the forces of darkness.</p>
             <img src="ranger.png" alt="Ranger" class="class-image">
         </section>
     </main>
-    <script src="DnDJS.js"></script>
+    <button onclick="rollStats()">Roll for Stats</button>
+    <div id="stats"></div>
+    <script> 
+    // Due to the stats being assigned differently, I wrote the script in the file instead of a separate js file.
+        function rollStats() {
+            // Function to roll 3d6
+            function roll3d6() {
+                return Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
+            }
+
+            // Roll 3d6 six times
+            //
+            const rolls = [];
+            for (let i = 0; i < 6; i++) {
+                rolls.push(roll3d6());
+            }
+
+            // Assign the highest rolls to appropriate stats
+            rolls.sort((a, b) => b - a);
+            const stats = {
+                "Strength": rolls[4],
+                "Dexterity": rolls[0],
+                "Constitution": rolls[2],
+                "Intelligence": rolls[5],
+                "Wisdom": rolls[1],
+                "Charisma": rolls[3]
+            };
+
+            // Display the rolled stats
+            document.getElementById("stats").innerHTML = `
+                <h3>Ranger Stats</h3>
+                <ul>
+                    ${Object.entries(stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
+                </ul>
+            `;
+        }
+    </script>
 </body>
 </html>
+

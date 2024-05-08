@@ -15,6 +15,17 @@
                   <a href="index.html">Home</a>
                 </li>
                 <li class="dropdown">
+                    <a href="#misc">General/Misc</a>
+                    <div class="dropdown-content">
+                        <a href="dm.html">DM'ing</a>
+                        <a href="equipment.html">Equipment</a>
+                        <a href="lore.html">Lore</a>
+                        <a href="monster.html">Monster of the Week!</a>
+                        <a href="quiz.html">Quiz</a>
+                        <a href="spellbook.html">Spellbook</a>
+                    </div>
+                </li>
+                <li class="dropdown">
                     <a href="#classes">Classes</a>
                     <div class="dropdown-content">
                         <a href="barbarian.html">Barbarian</a>
@@ -47,7 +58,13 @@
         <section id="dice">
             <h2>Dice Rolls</h2>
             <p>Rolling dice is a fundamental aspect of D&D. Here's how it works:</p>
-            <button id="rollButton">Roll a d20</button>
+            <button onclick="rollDice(4)">Roll a d4</button>
+            <button onclick="rollDice(6)">Roll a d6</button>
+            <button onclick="rollDice(8)">Roll a d8</button>
+            <button onclick="rollDice(10)">Roll a d10</button>
+            <button onclick="rollDice(12)">Roll a d12</button>
+            <button onclick="rollDice(20)">Roll a d20</button>
+            <button onclick="rollDice(100)">Roll a d100</button>
             <p id="result"></p>
         </section>
         <ul>
@@ -55,7 +72,6 @@
             <li>D&D has many rules that will take time to learn</li>
             <li>D&D is a social activity, so be ready to adapt and relax</li>
         </ul>
-        <p>On each class' page you will find a 'Roll for Stats' button, which will roll 3d6 6 times and allot them in the appropriate places for each class. These stats are then ready for you to use on a character of your choice!</p>
     </main>
     <script src="DnDJS.js"></script>
 </body>

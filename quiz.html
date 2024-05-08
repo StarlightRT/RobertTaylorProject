@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Quiz</title>
+    <link rel="stylesheet" href="DnD.css">
+</head>
+<body>
+    <header>
+        <h1>Dungeons & Dragons Basics</h1>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#misc">General/Misc</a>
+                    <div class="dropdown-content">
+                        <a href="dm.html">DM'ing</a>
+                        <a href="equipment.html">Equipment</a>
+                        <a href="lore.html">Lore</a>
+                        <a href="monster.html">Monster of the Week!</a>
+                        <a href="quiz.html">Quiz</a>
+                        <a href="spellbook.html">Spellbook</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#classes">Classes</a>
+                    <div class="dropdown-content">
+                        <a href="barbarian.html">Barbarian</a>
+                        <a href="bard.html">Bard</a>
+                        <a href="cleric.html">Cleric</a>
+                        <a href="druid.html">Druid</a>
+                        <a href="fighter.html">Fighter</a>
+                        <a href="monk.html">Monk</a>
+                        <a href="paladin.html">Paladin</a>
+                        <a href="ranger.html">Ranger</a>
+                        <a href="rogue.html">Rogue</a>
+                        <a href="sorcerer.html">Sorcerer</a>
+                        <a href="warlock.html">Warlock</a>
+                        <a href="wizard.html">Wizard</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="quiz">
+            <h2>Multiple Choice Questions</h2>
+            <form id="quizForm">
+                <ol>
+                    <li>
+                        <h3>What is the primary ability score for a Fighter with a greatsword?</h3>
+                        <label>
+                            <input type="radio" name="question1" value="a"> Strength
+                        </label>
+                        <label>
+                            <input type="radio" name="question1" value="b"> Dexterity
+                        </label>
+                        <label>
+                            <input type="radio" name="question1" value="c"> Constitution
+                        </label>
+                    </li>
+                    <li>
+                        <h3>Which of the following is not a spellcasting class?</h3>
+                        <label>
+                            <input type="radio" name="question2" value="a"> Sorcerer
+                        </label>
+                        <label>
+                            <input type="radio" name="question2" value="b"> Rogue
+                        </label>
+                        <label>
+                            <input type="radio" name="question2" value="c"> Wizard
+                        </label>
+                    </li>
+                    <li>
+                        <h3>What is the primary ability score for a Cleric?</h3>
+                        <label>
+                            <input type="radio" name="question3" value="a"> Wisdom
+                        </label>
+                        <label>
+                            <input type="radio" name="question3" value="b"> Intelligence
+                        </label>
+                        <label>
+                            <input type="radio" name="question3" value="c"> Charisma
+                        </label>
+                    </li>
+                </ol>
+                <button type="button" onclick="checkAnswers()">Check Answers</button>
+            </form>
+            <p id="result"></p>
+        </section>
+    </main>
+    <script>
+        function checkAnswers() {
+            var score = 0;
+            var answers = document.getElementById("quizForm").elements;
+
+            // Question 1
+            if (answers["question1"].value === "a") {
+                score++;
+            }
+
+            // Question 2
+            if (answers["question2"].value === "b") {
+                score++;
+            }
+
+            // Question 3
+            if (answers["question3"].value === "a") {
+                score++;
+            }
+
+            var resultElement = document.getElementById("result");
+            resultElement.textContent = "Your score: " + score + "/3";
+        }
+    </script>
+</body>
+</html>

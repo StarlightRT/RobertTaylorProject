@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster of the Week</title>
+    <link rel="stylesheet" href="DnD.css">
+</head>
+<body>
+    <header>
+        <h1>Dungeons & Dragons Basics</h1>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#misc">General/Misc</a>
+                    <div class="dropdown-content">
+                        <a href="dm.html">DM'ing</a>
+                        <a href="equipment.html">Equipment</a>
+                        <a href="lore.html">Lore</a>
+                        <a href="monster.html">Monster of the Week!</a>
+                        <a href="quiz.html">Quiz</a>
+                        <a href="spellbook.html">Spellbook</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#classes">Classes</a>
+                    <div class="dropdown-content">
+                        <a href="barbarian.html">Barbarian</a>
+                        <a href="bard.html">Bard</a>
+                        <a href="cleric.html">Cleric</a>
+                        <a href="druid.html">Druid</a>
+                        <a href="fighter.html">Fighter</a>
+                        <a href="monk.html">Monk</a>
+                        <a href="paladin.html">Paladin</a>
+                        <a href="ranger.html">Ranger</a>
+                        <a href="rogue.html">Rogue</a>
+                        <a href="sorcerer.html">Sorcerer</a>
+                        <a href="warlock.html">Warlock</a>
+                        <a href="wizard.html">Wizard</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="monster">
+            <h2>Monster of the Week</h2>
+            <p id="monsterName">Loading...</p>
+            <p id="monsterDescription"></p>
+        </section>
+    </main>
+    <script>
+        // Function to get the week number of the year
+        function getWeekNumber() {
+            var today = new Date();
+            var firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+            var pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+            return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+        }
+
+        // Function to select a monster based on the week number
+        function selectMonster() {
+            var weekNumber = getWeekNumber();
+            var monsters = [
+                { name: "Goblin", description: "Small, grotesque humanoids known for their cunning and greed." },
+                { name: "Orc", description: "Strong, aggressive humanoids with a penchant for warfare and brutality." },
+                { name: "Dragon", description: "Powerful, intelligent creatures with a variety of abilities and motivations." },
+                { name: "Beholder", description: "Strange, floating orbs with multiple eye stalks, each capable of unleashing different magical effects." },
+                { name: "Lich", description: "Undead spellcasters who have achieved immortality through dark rituals." },
+                { name: "Basilisk", description: "A fearsome creature with the ability to turn its victims to stone with a single gaze." },
+                { name: "Mind Flayer", description: "Sinister, brain-eating creatures with powerful psionic abilities." },
+                { name: "Troll", description: "Regenerating brutes known for their toughness and voracious appetite." },
+                { name: "Gorgon", description: "A metallic monster with deadly breath capable of turning flesh to stone." },
+                { name: "Hydra", description: "A multi-headed serpent with the ability to regrow its heads when severed." },
+                { name: "Kraken", description: "A legendary sea monster with immense size and terrifying tentacles." },
+                { name: "Mimic", description: "Shape-shifting creatures that disguise themselves as ordinary objects to ambush prey." },
+                { name: "Naga", description: "Serpentine beings with powerful magical abilities and a taste for manipulation." },
+                { name: "Rakshasa", description: "Cunning fiends with the ability to change shape and a penchant for deception." },
+                { name: "Sphinx", description: "Mysterious guardians of ancient knowledge with enigmatic riddles." },
+                { name: "Yeti", description: "Hulking, white-furred beasts that inhabit frozen landscapes." },
+                { name: "Doppelganger", description: "Shape-changing creatures that take on the appearance of others to infiltrate and deceive." },
+                { name: "Harpy", description: "Winged monsters with the bodies of birds and the faces of women, known for their enchanting songs." },
+                { name: "Manticore", description: "Beasts with the body of a lion, the wings of a bat, and a tail lined with razor-sharp spikes." },
+                { name: "Medusa", description: "A monstrous creature with snakes for hair and a gaze that turns flesh to stone." },
+                { name: "Phoenix", description: "A legendary bird that bursts into flames upon death, only to rise again from its own ashes." },
+                { name: "Specter", description: "Restless spirits bound to the material plane, fueled by a thirst for vengeance." },
+                { name: "Wight", description: "Undead creatures with a draining touch that saps the life force from their victims." },
+                { name: "Banshee", description: "Spectral beings known for their terrifying wails that foretell death." },
+                { name: "Chimera", description: "Monstrous amalgamations of different creatures, each with its own deadly abilities." },
+                { name: "Cockatrice", description: "A creature with the body of a rooster and the tail of a serpent, capable of petrifying its prey with a touch." },
+                { name: "Gelatinous Cube", description: "Amorphous blobs that lurk in dungeons, absorbing anything unfortunate enough to get caught in their path." },
+                { name: "Hag", description: "Wicked witches with twisted forms and dark magical powers." },
+                { name: "Mummy", description: "Undead guardians of ancient tombs, cursed to eternal undeath." },
+                { name: "Nymph", description: "Beautiful, ethereal creatures that embody the natural world, often luring unsuspecting travelers to their doom." },
+                { name: "Sahuagin", description: "Savage, aquatic humanoids with a fierce devotion to their shark god." },
+                { name: "Wraith", description: "Spectral undead with a chilling touch that drains the life force from the living." }
+            ];
+
+            return monsters[(weekNumber - 1) % monsters.length];
+        }
+
+        // Function to update the displayed monster
+        function updateMonster() {
+            var monster = selectMonster();
+            document.getElementById("monsterName").textContent = monster.name;
+            document.getElementById("monsterDescription").textContent = monster.description;
+        }
+
+        // Update the displayed monster when the page loads
+        document.addEventListener('DOMContentLoaded', updateMonster);
+    </script>
+</body>
+</html>

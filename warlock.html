@@ -12,7 +12,18 @@
         <nav>
             <ul>
                 <li class="dropdown">
-                    <a href="index.html">Home</a>
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#misc">General/Misc</a>
+                    <div class="dropdown-content">
+                        <a href="dm.html">DM'ing</a>
+                        <a href="equipment.html">Equipment</a>
+                        <a href="lore.html">Lore</a>
+                        <a href="monster.html">Monster of the Week!</a>
+                        <a href="quiz.html">Quiz</a>
+                        <a href="spellbook.html">Spellbook</a>
+                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="#classes">Classes</a>
@@ -41,43 +52,6 @@
             <img src="warlock.png" alt="Warlock" class="class-image">
         </section>
     </main>
-    <button onclick="rollStats()">Roll for Stats</button>
-    <div id="stats"></div>
-    <script> 
-    // Due to the stats being assigned differently, I wrote the script in the file instead of a separate js file.
-        function rollStats() {
-            // Function to roll 3d6
-            function roll3d6() {
-                return Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1 + Math.floor(Math.random() * 6) + 1;
-            }
-
-            // Roll 3d6 six times
-            //
-            const rolls = [];
-            for (let i = 0; i < 6; i++) {
-                rolls.push(roll3d6());
-            }
-
-            // Assign the highest rolls to appropriate stats
-            rolls.sort((a, b) => b - a);
-            const stats = {
-                "Strength": rolls[4],
-                "Dexterity": rolls[2],
-                "Constitution": rolls[1],
-                "Intelligence": rolls[5],
-                "Wisdom": rolls[3],
-                "Charisma": rolls[0]
-            };
-
-            // Display the rolled stats
-            document.getElementById("stats").innerHTML = `
-                <h3>Warlock Stats</h3>
-                <ul>
-                    ${Object.entries(stats).map(([stat, value]) => `<li>${stat}: ${value}</li>`).join('')}
-                </ul>
-            `;
-        }
-    </script>
+    <script src="DnDJS.js"></script>
 </body>
 </html>
-

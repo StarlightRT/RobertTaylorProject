@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spell Book</title>
+    <link rel="stylesheet" href="DnD.css">
+</head>
+<body>
+    <header>
+        <h1>Dungeons & Dragons Basics</h1>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#misc">General/Misc</a>
+                    <div class="dropdown-content">
+                        <a href="dm.html">DM'ing</a>
+                        <a href="equipment.html">Equipment</a>
+                        <a href="lore.html">Lore</a>
+                        <a href="monster.html">Monster of the Week!</a>
+                        <a href="quiz.html">Quiz</a>
+                        <a href="spellbook.html">Spellbook</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#classes">Classes</a>
+                    <div class="dropdown-content">
+                        <a href="barbarian.html">Barbarian</a>
+                        <a href="bard.html">Bard</a>
+                        <a href="cleric.html">Cleric</a>
+                        <a href="druid.html">Druid</a>
+                        <a href="fighter.html">Fighter</a>
+                        <a href="monk.html">Monk</a>
+                        <a href="paladin.html">Paladin</a>
+                        <a href="ranger.html">Ranger</a>
+                        <a href="rogue.html">Rogue</a>
+                        <a href="sorcerer.html">Sorcerer</a>
+                        <a href="warlock.html">Warlock</a>
+                        <a href="wizard.html">Wizard</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <input type="text" id="searchInput" placeholder="Search spells...">
+        <section id="spellList">
+            <h2>Spells</h2>
+            <ul id="spells">
+                <li><strong>Acid Splash</strong> - You hurl a bubble of acid.</li>
+                <li><strong>Burning Hands</strong> - A cone of searing flame.</li>
+                <li><strong>Charm Person</strong> - You attempt to charm a humanoid.</li>
+                <li><strong>Cure Wounds</strong> - A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier.</li>
+                <li><strong>Detect Magic</strong> - For the duration, you sense the presence of magic within 30 feet of you.</li>
+                <li><strong>Disguise Self</strong> - You make yourself, including your clothing, armor, weapons, and other belongings on your person, look different until the spell ends or until you use your action to dismiss it.</li>
+                <li><strong>Entangle</strong> - Grasping weeds and vines sprout from the ground in a 20-foot square starting from a point within range.</li>
+                <li><strong>Expeditious Retreat</strong> - This spell allows you to move at an incredible pace.</li>
+                <li><strong>Faerie Fire</strong> - Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice).</li>
+                <li><strong>Feather Fall</strong> - Choose up to five falling creatures within range.</li>
+                <li><strong>Find Familiar</strong> - You gain the service of a familiar, a spirit that takes an animal form you choose.</li>
+                <li><strong>Fireball</strong> - A ball of fire erupts from your hands and hurtles toward a location you specify.</li>
+                <li><strong>Grease</strong> - Slick grease covers the ground in a 10-foot square centered on a point within range and turns it into difficult terrain for the duration.</li>
+                <li><strong>Guiding Bolt</strong> - A flash of light streaks toward a creature of your choice within range.</li>
+                <li><strong>Hellish Rebuke</strong> - You point your finger, and the creature that damaged you is momentarily surrounded by hellish flames.</li>
+                <li><strong>Healing Word</strong> - A creature of your choice that you can see within range regains hit points.</li>
+                <li><strong>Identify</strong> - You choose one object that you must touch throughout the casting of the spell.</li>
+                <li><strong>Invisibility</strong> - A creature you touch becomes invisible until the spell ends.</li>
+                <li><strong>Jump</strong> - You touch a creature and their jump height triples.</li>
+                <li><strong>Longstrider</strong> - You touch a creature and they run like the wind adding 5 ft to their movement.</li>
+                <li><strong>Mage Armor</strong> - You touch a willing creature who isn't wearing armor.</li>
+                <li><strong>Mage Hand</strong> - A spectral, floating hand appears at a point you choose within range.</li>
+                <li><strong>Magic Missile</strong> - You create three glowing darts of magical force.</li>
+                <li><strong>Message</strong> - You point your finger toward a creature within range and whisper a message.</li>
+                <li><strong>Protection from Evil and Good</strong> - Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.</li>
+                <li><strong>Ray of Frost</strong> - A frigid beam of blue-white light streaks toward a creature within range.</li>
+                <li><strong>Ray of Sickness</strong> - A ray of sickening greenish energy lashes out toward a creature within range.</li>
+                <li><strong>Sacred Flame</strong> - Flame-like radiance descends on a creature that you can see within range.</li>
+                <li><strong>Sleep</strong> - This spell sends creatures into a magical slumber.</li>
+                <li><strong>Thunderous Smite</strong> - The first time you hit with a melee weapon attack during this spell's duration, your weapon rings with thunder.</li>
+                <li><strong>Thunderwave</strong> - A wave of thunderous force sweeps out from you.</li>
+                <li><strong>Witch Bolt</strong> - A beam of crackling blue energy lances out toward a creature within range.</li>
+            </ul>
+        </section>
+        <section id="addSpell">
+            <h2>Add Your Own Spell</h2>
+            <input type="text" id="spellName" placeholder="Enter spell name">
+            <textarea id="spellDescription" placeholder="Enter spell description"></textarea>
+            <button onclick="addSpell()">Add Spell</button>
+        </section>
+    </main>
+    <script>
+        function addSpell() {
+            var name = document.getElementById("spellName").value.trim();
+            var description = document.getElementById("spellDescription").value.trim();
+
+            if (name !== "" && description !== "") {
+                var spellList = document.getElementById("spells");
+                var listItem = document.createElement("li");
+                listItem.innerHTML = "<strong>" + name + "</strong> - " + description;
+                spellList.appendChild(listItem);
+                document.getElementById("spellName").value = "";
+                document.getElementById("spellDescription").value = "";
+            } else {
+                alert("Please enter both a name and a description for the spell.");
+            }
+        }
+
+        document.getElementById("searchInput").addEventListener("input", function() {
+            var input = this.value.toLowerCase();
+            var spells = document.querySelectorAll("#spells li");
+            spells.forEach(function(spell) {
+                var spellName = spell.textContent.toLowerCase();
+                if (spellName.indexOf(input) === -1) {
+                    spell.style.display = "none";
+                } else {
+                    spell.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

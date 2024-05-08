@@ -1,4 +1,13 @@
-document.getElementById('rollButton').addEventListener('click', function() {
-    var result = Math.floor(Math.random() * 20) + 1; // Roll a d20
-    document.getElementById('result').textContent = 'You rolled a ' + result + '.';
+function rollDice(sides) {
+    var result = Math.floor(Math.random() * sides) + 1;
+    document.getElementById("result").innerText = "You rolled a d" + sides + " and got: " + result;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#dice button').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var sides = parseInt(button.textContent.match(/\d+/)[0]);
+            rollDice(sides);
+        });
+    });
 });
